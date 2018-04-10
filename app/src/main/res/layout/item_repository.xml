@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="#fff"
+    xmlns:tools="http://schemas.android.com/tools">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imv_owner_avatar"
+        android:src="@drawable/avater"
+        android:layout_width="48dp"
+        android:layout_margin="16dp"
+        android:layout_height="48dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:id="@+id/tv_repository_name"
+                tools:text="Telegram"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_date_created"
+                tools:text="Apr 2"
+                android:textColor="@color/colorPrimary"
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                tools:text="Telegram groups"
+                android:id="@+id/tv_repository_owner"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="@drawable/star"
+                android:layout_width="24dp"
+                android:padding="4dp"
+                android:layout_height="24dp" />
+            <TextView
+                android:id="@+id/tv_star_number"
+                tools:text="2,445"
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

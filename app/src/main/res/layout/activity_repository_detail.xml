@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.RepositoryDetailActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:layout_height="250dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="120dp"
+                android:layout_gravity="center"
+                android:layout_height="120dp"
+                android:id="@+id/imv_owner_avatar"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                android:src="@drawable/avater"
+                app:civ_border_color="@color/colorWhite"
+                app:civ_border_width="2dp" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:layout_collapseParallaxMultiplier="1.0"
+                app:layout_collapseMode="pin"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.CardView
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Owner"
+                        android:paddingBottom="4dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        tools:text="Afomic software"
+                        android:id="@+id/tv_repository_owner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Description"
+                        android:paddingBottom="4dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+                        android:layout_width="match_parent"
+                        android:id="@+id/tv_repo_description"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Statistics"
+                        android:paddingBottom="4dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_margin="4dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:background="@drawable/harsh_box"
+                                android:text="Star"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:gravity="center"
+                                android:paddingRight="8dp"
+                                android:paddingLeft="8dp"
+                                android:drawablePadding="4dp"
+                                android:drawableLeft="@drawable/ic_star_black"
+                                android:layout_width="wrap_content"
+                                android:layout_height="36dp" />
+                            <TextView
+                                android:background="@drawable/white_box"
+                                tools:text="24444"
+                                android:id="@+id/tv_repo_star"
+                                android:gravity="center"
+                                android:padding="7dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="36dp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_margin="4dp"
+                            android:orientation="horizontal"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:background="@drawable/harsh_box"
+                                android:text="Fork"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:gravity="center"
+                                android:paddingRight="8dp"
+                                android:paddingLeft="8dp"
+                                android:drawablePadding="8dp"
+                                android:drawableLeft="@drawable/fork"
+                                android:layout_width="wrap_content"
+                                android:layout_height="36dp" />
+                            <TextView
+                                android:background="@drawable/white_box"
+                                tools:text="244"
+                                android:id="@+id/tv_repo_fork"
+                                android:gravity="center"
+                                android:padding="7dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="36dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_margin="4dp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:background="@drawable/harsh_box"
+                            android:text="Watchers"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:gravity="center"
+                            android:paddingRight="8dp"
+                            android:paddingLeft="8dp"
+                            android:drawablePadding="8dp"
+                            android:drawableLeft="@drawable/eye"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp" />
+                        <TextView
+                            android:background="@drawable/white_box"
+                            tools:text="244"
+                            android:id="@+id/tv_repo_watcher"
+                            android:gravity="center"
+                            android:padding="7dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Date"
+                        android:paddingBottom="4dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:text="Created at: "
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            tools:text="12/2012/23"
+                            android:id="@+id/tv_repo_created_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:text="Last Udpate: "
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            tools:text="12/2012/23"
+                            android:id="@+id/tv_repo_last_upate_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
