@@ -2,8 +2,8 @@ package com.example.afomic.toprepo.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.example.afomic.toprepo.R;
 
@@ -54,6 +54,11 @@ public class RepositoryDetailActivity extends AppCompatActivity implements Repos
 
     @Override
     public void showMessage(String message) {
+
+    }
+
+    @Override
+    public void setUpView() {
 
     }
 }

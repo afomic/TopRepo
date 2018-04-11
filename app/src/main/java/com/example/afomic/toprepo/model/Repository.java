@@ -22,7 +22,7 @@ public class Repository implements Parcelable {
         createdAt=repository.getCreatedAt();
         updatedAt=repository.getUpdatedAt();
         forkNumber=repository.getForks();
-        starNumber=repository.getSize();
+        starNumber=repository.getStargazersCount();
     }
 
     protected Repository(Parcel in) {

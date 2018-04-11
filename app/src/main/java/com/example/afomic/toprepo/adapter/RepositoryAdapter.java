@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.afomic.toprepo.R;
 import com.example.afomic.toprepo.model.Repository;
+import com.example.afomic.toprepo.utils.GlideApp;
 
 import java.util.List;
 
@@ -38,12 +40,16 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Re
 
     @Override
     public void onBindViewHolder(@NonNull RepositoryHolder holder, int position) {
+        Repository repository=mRepositories.get(position);
+        holder.bindView(repository);
 
     }
 
     @Override
     public int getItemCount() {
-        if(mRepositories!=null) return mRepositories.size();
+        if(mRepositories!=null){
+            return mRepositories.size();
+        }
         return 0;
     }
 
@@ -54,7 +60,7 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Re
             super(itemView);
             repoCreatedDateTextView=itemView.findViewById(R.id.tv_date_created);
             repoOwnerTextView=itemView.findViewById(R.id.tv_repository_owner);
-            repoStarsTextView=itemView.findViewById(R.id.tv_repo_star);
+            repoStarsTextView=itemView.findViewById(R.id.tv_star_number);
             repoNameTextView=itemView.findViewById(R.id.tv_repository_name);
             repoOwnerAvatarImageView=itemView.findViewById(R.id.imv_owner_avatar);
             itemView.setOnClickListener(this);
@@ -64,6 +70,16 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Re
         public void onClick(View v) {
             Repository clickedRepository=mRepositories.get(getAdapterPosition());
             mRepositoryClickListener.onClick(clickedRepository);
+        }
+        public void bindView(Repository repository){
+            repoNameTextView.setText(repository.getName());
+            repoStarsTextView.setText(String.valueOf(repository.getStarNumber()));
+            repoCreatedDateTextView.setText(String.valueOf(repository.getCreatedAt()));
+            repoOwnerTextView.setText(repository.getOwnerName());
+            GlideApp.with(mContext)
+                    .load(repository.getOwnerAvatarUrl())
+                    .placeholder(R.drawable.avater)
+                    .into(repoOwnerAvatarImageView);
         }
     }
 }

@@ -18,7 +18,7 @@ public class RemoteDataSource {
 
     }
     @Inject
-    private GithubAPI githubAPI;
+    GithubAPI githubAPI;
     @Inject
     public RemoteDataSource(){
     }
