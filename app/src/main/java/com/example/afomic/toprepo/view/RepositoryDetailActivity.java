@@ -1,9 +1,11 @@
 package com.example.afomic.toprepo.view;
 
+import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.afomic.toprepo.R;
@@ -80,8 +82,20 @@ public class RepositoryDetailActivity extends AppCompatActivity implements Repos
         repoForkNumberTextView.setText(String.valueOf(repository.getForkNumber()));
         repoOwnerTextView.setText(repository.getOwnerName());
         getSupportActionBar().setTitle(repository.getName());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white);
         repoStarNumberTextView.setText(String.valueOf(repository.getStarNumber()));
         repoLastUpdateTextView.setText(repository.getUpdatedAt());
+        dateCreateTextView.setText(repository.getCreatedAt());
+        collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -10,5 +10,8 @@ public interface MainView extends BaseView {
     void showRepositoryDetailView(Repository repository);
     void showProgressBar();
     void hideProgressBar();
+    void refreshView();
+    void showErrorView();
+    void hideErrorView();
 
 }

@@ -38,14 +38,18 @@
             android:orientation="vertical"
             android:id="@+id/error_page_layout"
             android:layout_centerInParent="true"
+            android:gravity="center"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:src="@drawable/ic_error"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
             <TextView
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:layout_width="wrap_content"
+                android:text="No internet Connection, pull to refressh"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </RelativeLayout>

@@ -36,6 +36,9 @@ public class RemoteDataSource {
                     dataSourceCallback.onSuccess(repositories);
                 }else {
                     dataSourceCallback.onFailure(call,new Throwable("Api call not Successful"));
+                    if(!call.isExecuted()){
+                        call.enqueue(this);
+                    };
                 }
 
             }

@@ -1,6 +1,8 @@
 package com.example.afomic.toprepo.view;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -8,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -19,6 +22,7 @@ import com.example.afomic.toprepo.di.DaggerMainActivityComponent;
 import com.example.afomic.toprepo.di.MainActivityComponent;
 import com.example.afomic.toprepo.model.Repository;
 import com.example.afomic.toprepo.presenter.MainPresenter;
+import com.example.afomic.toprepo.utils.EndlessScrollListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +40,14 @@ public class MainActivity extends AppCompatActivity implements MainView,
     RecyclerView repositoryRecyclerView;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.swipe_refresh)
+    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.error_page_layout)
+    LinearLayout errorViewLayout;
     MainPresenter mainPresenter;
     MainActivityComponent mainActivityComponent;
     LinearLayoutManager mLinearLayoutManager;
+    EndlessScrollListener endlessScrollListener;
 
     List<Repository> mRepositories;
     private RepositoryAdapter mRepositoryAdapter;
@@ -66,7 +75,22 @@ public class MainActivity extends AppCompatActivity implements MainView,
         repositoryRecyclerView.setLayoutManager(mLinearLayoutManager);
         repositoryRecyclerView.addItemDecoration(new DividerItemDecoration(MainActivity.this,DividerItemDecoration.VERTICAL));
         repositoryRecyclerView.setAdapter(mRepositoryAdapter);
-        mainPresenter.loadRepository();
+        endlessScrollListener=new EndlessScrollListener(mLinearLayoutManager) {
+            @Override
+            public void onLoadMore(int currentPage) {
+                mainPresenter.loadRepository(currentPage);
+            }
+        };
+        repositoryRecyclerView.setOnScrollListener(endlessScrollListener);
+        mainPresenter.loadRepository(1);
+        swipeRefreshLayout.setColorSchemeColors(Color.BLUE,Color.GREEN,Color.RED);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mainPresenter.refreshRepositories();
+            }
+        });
 
     }
 
@@ -76,9 +100,16 @@ public class MainActivity extends AppCompatActivity implements MainView,
     }
 
     @Override
-    public void showRepositories(List<Repository> repository) {
-        mRepositories.addAll(repository);
-        mRepositoryAdapter.notifyDataSetChanged();
+    public void showRepositories(List<Repository> repositories) {
+        swipeRefreshLayout.setRefreshing(false);
+//        mRepositories.addAll(repository);
+//        mRepositoryAdapter.notifyDataSetChanged();
+        int lastInsertionPoint=mRepositories.size();
+        for(Repository repo:repositories){
+            mRepositories.add(repo);
+            mRepositoryAdapter.notifyItemInserted(lastInsertionPoint);
+            lastInsertionPoint++;
+        }
     }
 
     @Override
@@ -100,7 +131,30 @@ public class MainActivity extends AppCompatActivity implements MainView,
 
     @Override
     public void hideProgressBar() {
-        progressBar.setVisibility(View.GONE);
+        if(progressBar.isShown()){
+            progressBar.setVisibility(View.GONE);
+        }
+
+    }
+
+    @Override
+    public void refreshView() {
+        mRepositories.clear();
+        mRepositoryAdapter.notifyDataSetChanged();
+        endlessScrollListener.reset();
+    }
+
+    @Override
+    public void showErrorView() {
+        swipeRefreshLayout.setRefreshing(false);
+        errorViewLayout.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideErrorView() {
+        if(errorViewLayout.isShown()){
+            errorViewLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override
