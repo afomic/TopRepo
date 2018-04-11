@@ -1,12 +1,15 @@
 package com.example.afomic.toprepo.model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.example.afomic.toprepo.api.Item;
 
-
+@Entity
 public class Repository implements Parcelable {
+    @PrimaryKey
     private String name;
     private String ownerAvatarUrl;
     private String ownerName;
