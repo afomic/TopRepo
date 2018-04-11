@@ -14,7 +14,6 @@ import com.example.afomic.toprepo.di.RepositoryDetailsPresenterComponent;
 import com.example.afomic.toprepo.model.Repository;
 import com.example.afomic.toprepo.presenter.RepositoryDetailPresenter;
 import com.example.afomic.toprepo.utils.GlideApp;
-import com.github.florent37.glidepalette.BitmapPalette;
 import com.github.florent37.glidepalette.GlidePalette;
 
 import butterknife.BindView;

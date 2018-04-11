@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.afomic.toprepo.R;
 import com.example.afomic.toprepo.model.Repository;
@@ -74,7 +73,7 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Re
         public void bindView(Repository repository){
             repoNameTextView.setText(repository.getName());
             repoStarsTextView.setText(String.valueOf(repository.getStarNumber()));
-            repoCreatedDateTextView.setText(String.valueOf(repository.getCreatedAt()));
+            repoCreatedDateTextView.setText(repository.getCreatedAt());
             repoOwnerTextView.setText(repository.getOwnerName());
             GlideApp.with(mContext)
                     .load(repository.getOwnerAvatarUrl())

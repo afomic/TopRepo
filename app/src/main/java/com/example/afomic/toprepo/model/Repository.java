@@ -29,8 +29,8 @@ public class Repository implements Parcelable {
         name=repository.getName();
         ownerName=repository.getOwner().getLogin();
         ownerAvatarUrl=repository.getOwner().getAvatarUrl();
-        createdAt=repository.getCreatedAt();
-        updatedAt=repository.getUpdatedAt();
+        createdAt=repository.getCreatedAt().substring(0,10);
+        updatedAt=repository.getPushedAt().substring(0,10);
         forkNumber=repository.getForks();
         starNumber=repository.getStargazersCount();
         description=repository.getDescription();
