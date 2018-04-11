@@ -12,6 +12,7 @@
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
+            android:id="@+id/collapsing_toolbar"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:layout_height="250dp">
             <de.hdodenhof.circleimageview.CircleImageView
@@ -35,7 +36,6 @@
     </android.support.design.widget.AppBarLayout>
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:padding="8dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -116,8 +116,7 @@
                         <LinearLayout
                             android:orientation="horizontal"
                             android:layout_margin="4dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <TextView
                                 android:background="@drawable/harsh_box"
@@ -142,8 +141,7 @@
                         <LinearLayout
                             android:layout_margin="4dp"
                             android:orientation="horizontal"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <TextView
                                 android:background="@drawable/harsh_box"
@@ -166,31 +164,7 @@
                                 android:layout_height="36dp" />
                         </LinearLayout>
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_margin="4dp"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:background="@drawable/harsh_box"
-                            android:text="Watchers"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:gravity="center"
-                            android:paddingRight="8dp"
-                            android:paddingLeft="8dp"
-                            android:drawablePadding="8dp"
-                            android:drawableLeft="@drawable/eye"
-                            android:layout_width="wrap_content"
-                            android:layout_height="36dp" />
-                        <TextView
-                            android:background="@drawable/white_box"
-                            tools:text="244"
-                            android:id="@+id/tv_repo_watcher"
-                            android:gravity="center"
-                            android:padding="7dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="36dp" />
-                    </LinearLayout>
+
                 </LinearLayout>
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.CardView

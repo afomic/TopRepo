@@ -14,6 +14,7 @@ public class Repository implements Parcelable {
     private String updatedAt;
     private int forkNumber;
     private int starNumber;
+    private String description;
 
     public Repository(Item repository){
         name=repository.getName();
@@ -23,6 +24,7 @@ public class Repository implements Parcelable {
         updatedAt=repository.getUpdatedAt();
         forkNumber=repository.getForks();
         starNumber=repository.getStargazersCount();
+        description=repository.getDescription();
     }
 
     protected Repository(Parcel in) {
@@ -33,6 +35,7 @@ public class Repository implements Parcelable {
         updatedAt = in.readString();
         forkNumber = in.readInt();
         starNumber = in.readInt();
+        description= in.readString();
     }
 
     public static final Creator<Repository> CREATOR = new Creator<Repository>() {
@@ -103,6 +106,14 @@ public class Repository implements Parcelable {
         this.starNumber = starNumber;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -117,5 +128,6 @@ public class Repository implements Parcelable {
         dest.writeString(updatedAt);
         dest.writeInt(forkNumber);
         dest.writeInt(starNumber);
+        dest.writeString(description);
     }
 }
