@@ -8,11 +8,13 @@ import com.example.afomic.toprepo.model.Repository;
 
 import java.util.List;
 
+import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
+
 @Dao
 public interface RepositoryDao {
-    @Query("SELECT * FROM Repository")
-    List<Repository> getAll();
+    @Query("SELECT * FROM Repository  LIMIT 20, :start")
+    List<Repository> getRepositories(int start);
 
-    @Insert
-    void insertAll(Repository... repositories);
+    @Insert(onConflict = REPLACE)
+    void insertAll(List<Repository> repositories);
 }

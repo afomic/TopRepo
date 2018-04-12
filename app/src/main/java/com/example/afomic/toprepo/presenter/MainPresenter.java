@@ -3,7 +3,6 @@ package com.example.afomic.toprepo.presenter;
 import com.example.afomic.toprepo.api.ApiResponse;
 import com.example.afomic.toprepo.api.RemoteDataSource;
 import com.example.afomic.toprepo.model.Repository;
-import com.example.afomic.toprepo.utils.NetworkUtils;
 import com.example.afomic.toprepo.view.MainView;
 
 import java.util.List;
@@ -16,8 +15,6 @@ public class MainPresenter implements BasePresenter<MainView> {
     private MainView mainView;
     @Inject
     RemoteDataSource dataSource;
-    @Inject
-    NetworkUtils networkUtils;
 
     @Inject
     public MainPresenter(){
@@ -45,7 +42,7 @@ public class MainPresenter implements BasePresenter<MainView> {
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
                 t.printStackTrace();
-                mainView.showMessage(t.getMessage());
+                mainView.showMessage("Failed to Fetch Data");
                 mainView.showErrorView();
                 mainView.hideProgressBar();
             }

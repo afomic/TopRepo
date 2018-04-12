@@ -4,14 +4,15 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 import com.example.afomic.toprepo.api.Item;
 
 @Entity
 public class Repository implements Parcelable {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    @PrimaryKey
+    @NonNull
     private String name;
     private String ownerAvatarUrl;
     private String ownerName;
@@ -117,14 +118,6 @@ public class Repository implements Parcelable {
 
     public String getDescription() {
         return description;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setDescription(String description) {
