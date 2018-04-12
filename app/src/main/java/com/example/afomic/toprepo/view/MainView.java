@@ -13,5 +13,6 @@ public interface MainView extends BaseView {
     void refreshView();
     void showErrorView();
     void hideErrorView();
+    boolean isEmpty();
 
 }

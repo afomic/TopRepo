@@ -5,4 +5,14 @@
     <dimen name="avatar_border_width">2dp</dimen>
     <dimen name="card_margin">8dp</dimen>
     <dimen name="content_padding">8dp</dimen>
+    <dimen name="error_image_height">80dp</dimen>
+    <dimen name="error_image_width">80dp</dimen>
+    <dimen name="list_avatar_image_width">48dp</dimen>
+    <dimen name="list_avatar_image_height">48dp</dimen>
+    <dimen name="list_avatar_padding">16dp</dimen>
+    <dimen name="big_text_size">18sp</dimen>
+    <dimen name="icon_width">24dp</dimen>
+    <dimen name="icon_height">24dp</dimen>
+    <dimen name="collasping_toolbar_height">250dp</dimen>
+    <dimen name="title_bottom_padding">4dp</dimen>
 </resources>

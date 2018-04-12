@@ -44,7 +44,9 @@ public class MainPresenter implements BasePresenter<MainView> {
             @Override
             public void onFailure() {
                 mainView.showMessage("Failed to Fetch Data");
-                mainView.showErrorView();
+                if(mainView.isEmpty()){
+                    mainView.showErrorView();
+                }
                 mainView.hideProgressBar();
             }
         });

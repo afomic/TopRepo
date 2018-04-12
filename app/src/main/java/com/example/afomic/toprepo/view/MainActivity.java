@@ -158,6 +158,11 @@ public class MainActivity extends AppCompatActivity implements MainView,
     }
 
     @Override
+    public boolean isEmpty() {
+        return mRepositories==null||mRepositories.isEmpty();
+    }
+
+    @Override
     public void onClick(Repository repository) {
         mainPresenter.repositoryClicked(repository);
     }

@@ -30,7 +30,11 @@ public class LocalDataSource implements DataSource<Repository> {
                 Runnable myRunnable = new Runnable() {
                     @Override
                     public void run() {
-                        callback.onSuccess(repositories);
+                        if(repositories.size()==0){
+                            callback.onFailure(new Throwable("Empty Database"));
+                        }else {
+                            callback.onSuccess(repositories);
+                        }
                     }
                 };
                 mainHandler.post(myRunnable);

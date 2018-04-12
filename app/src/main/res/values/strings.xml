@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TopRepo</string>
+    <string name="error_message">An Error Occurred, pull to refressh</string>
+    <string name="statistics_heading">Statistics</string>
+    <string name="description_heading">Description</string>
+    <string name="owner_header">Owner</string>
 </resources>

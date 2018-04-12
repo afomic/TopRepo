@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:id="@+id/collapsing_toolbar"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            android:layout_height="250dp">
+            android:layout_height="@dimen/collasping_toolbar_height">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="@dimen/detail_page_avatar_width"
                 android:layout_gravity="center"
@@ -52,8 +52,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
-                        android:text="Owner"
-                        android:paddingBottom="4dp"
+                        android:text="@string/owner_header"
+                        android:paddingBottom="@dimen/title_bottom_padding"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@color/colorPrimary"
                         android:layout_width="wrap_content"
@@ -77,8 +77,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
-                        android:text="Description"
-                        android:paddingBottom="4dp"
+                        android:text="@string/description_heading"
+                        android:paddingBottom="@dimen/title_bottom_padding"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@color/colorPrimary"
                         android:layout_width="wrap_content"
@@ -102,8 +102,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
-                        android:text="Statistics"
-                        android:paddingBottom="4dp"
+                        android:text="@string/statistics_heading"
+                        android:paddingBottom="@dimen/title_bottom_padding"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@color/colorPrimary"
                         android:layout_width="wrap_content"

@@ -43,7 +43,6 @@ public class DataRepository {
             localDatasource.getData(page, new DataSourceCallback<Repository>() {
                 @Override
                 public void onSuccess(List<Repository> data) {
-                    Log.e("tag","repo size"+ data.size());
                     callback.onSuccess(data);
                 }
 

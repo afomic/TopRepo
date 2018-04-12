@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:background="#fff"
+    android:background="@color/colorWhite"
     xmlns:tools="http://schemas.android.com/tools">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imv_owner_avatar"
         android:src="@drawable/avater"
-        android:layout_width="48dp"
-        android:layout_margin="16dp"
-        android:layout_height="48dp" />
+        android:layout_width="@dimen/list_avatar_image_width"
+        android:layout_margin="@dimen/list_avatar_padding"
+        android:layout_height="@dimen/list_avatar_image_height" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -25,14 +25,14 @@
                 android:id="@+id/tv_repository_name"
                 tools:text="Telegram"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
+                android:textSize="@dimen/big_text_size"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/tv_date_created"
                 tools:text="Apr 2"
                 android:textColor="@color/colorPrimary"
-                android:padding="8dp"
+                android:padding="@dimen/content_padding"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -49,13 +49,13 @@
                 android:layout_height="wrap_content" />
             <ImageView
                 android:src="@drawable/star"
-                android:layout_width="24dp"
+                android:layout_width="@dimen/icon_width"
                 android:padding="4dp"
-                android:layout_height="24dp" />
+                android:layout_height="@dimen/icon_height" />
             <TextView
                 android:id="@+id/tv_star_number"
                 tools:text="2,445"
-                android:padding="8dp"
+                android:padding="@dimen/content_padding"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
