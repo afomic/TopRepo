@@ -1,6 +1,7 @@
 package com.example.afomic.toprepo.data;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.afomic.toprepo.Room.AppDatabase;
 import com.example.afomic.toprepo.api.ApiResponse;
@@ -24,9 +25,9 @@ public class DataRepository {
     @Inject
     public DataRepository(){
     }
-    public void loadRepository(final RepositoryCallback callback){
+    public void loadMoreRepository(int page, final RepositoryCallback callback){
         if(NetworkUtils.isInternetConnected(context)){
-            remoteDataSource.getRepository(1, new RemoteDataSource.DataSourceCallback() {
+            remoteDataSource.getRepository(page, new RemoteDataSource.DataSourceCallback() {
                 @Override
                 public void onSuccess(List<Repository> repositories) {
                     callback.onSuccess(repositories);
@@ -39,9 +40,10 @@ public class DataRepository {
                 }
             });
         }else {
-            localDatasource.getData(1, new DataSourceCallback<Repository>() {
+            localDatasource.getData(page, new DataSourceCallback<Repository>() {
                 @Override
                 public void onSuccess(List<Repository> data) {
+                    Log.e("tag","repo size"+ data.size());
                     callback.onSuccess(data);
                 }
 
@@ -51,21 +53,6 @@ public class DataRepository {
                 }
             });
         }
-
-    }
-    public void loadMoreRepository(int page, final RepositoryCallback callback){
-        remoteDataSource.getRepository(page, new RemoteDataSource.DataSourceCallback() {
-            @Override
-            public void onSuccess(List<Repository> repositories) {
-                callback.onSuccess(repositories);
-                localDatasource.saveData(repositories);
-            }
-
-            @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-                callback.onFailure();
-            }
-        });
 
     }
 }

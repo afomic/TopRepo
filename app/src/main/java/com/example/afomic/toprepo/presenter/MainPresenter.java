@@ -2,6 +2,8 @@ package com.example.afomic.toprepo.presenter;
 
 import com.example.afomic.toprepo.api.ApiResponse;
 import com.example.afomic.toprepo.api.RemoteDataSource;
+import com.example.afomic.toprepo.data.DataRepository;
+import com.example.afomic.toprepo.data.RepositoryCallback;
 import com.example.afomic.toprepo.model.Repository;
 import com.example.afomic.toprepo.view.MainView;
 
@@ -14,7 +16,7 @@ import retrofit2.Call;
 public class MainPresenter implements BasePresenter<MainView> {
     private MainView mainView;
     @Inject
-    RemoteDataSource dataSource;
+    DataRepository dataRepository;
 
     @Inject
     public MainPresenter(){
@@ -31,7 +33,7 @@ public class MainPresenter implements BasePresenter<MainView> {
 
     }
     public void loadRepository(int pageNumber){
-        dataSource.getRepository(pageNumber, new RemoteDataSource.DataSourceCallback() {
+        dataRepository.loadMoreRepository(pageNumber, new RepositoryCallback() {
             @Override
             public void onSuccess(List<Repository> repositories) {
                 mainView.hideProgressBar();
@@ -40,8 +42,7 @@ public class MainPresenter implements BasePresenter<MainView> {
             }
 
             @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-                t.printStackTrace();
+            public void onFailure() {
                 mainView.showMessage("Failed to Fetch Data");
                 mainView.showErrorView();
                 mainView.hideProgressBar();

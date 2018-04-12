@@ -1,5 +1,9 @@
 package com.example.afomic.toprepo.data;
 
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
+
 import com.example.afomic.toprepo.Room.AppDatabase;
 import com.example.afomic.toprepo.model.Repository;
 
@@ -15,15 +19,35 @@ public class LocalDataSource implements DataSource<Repository> {
 
     }
     @Override
-    public void getData(int pageNumber, DataSourceCallback<Repository> callback) {
-        int start=pageNumber*Constants.REPOSITORY_PER_PAGE;
-        List<Repository> repositories =appDatabase.repositoryDao().getRepositories(start);
-        callback.onSuccess(repositories);
+    public void getData(final int pageNumber, final DataSourceCallback<Repository> callback) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int start=(pageNumber-1)*Constants.REPOSITORY_PER_PAGE;
+                final List<Repository> repositories =appDatabase.repositoryDao().getRepositories(start);
+                Handler mainHandler = new Handler(Looper.getMainLooper());
+
+                Runnable myRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        callback.onSuccess(repositories);
+                    }
+                };
+                mainHandler.post(myRunnable);
+            }
+        }).start();
+
+
     }
 
     @Override
-    public void saveData(List<Repository> data) {
-        appDatabase.repositoryDao().insertAll(data);
+    public void saveData(final List<Repository> data) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+            appDatabase.repositoryDao().insertAll(data);
+            }
+         }).start();
 
     }
 }

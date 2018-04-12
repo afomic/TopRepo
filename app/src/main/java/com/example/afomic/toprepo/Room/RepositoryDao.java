@@ -12,7 +12,7 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
 @Dao
 public interface RepositoryDao {
-    @Query("SELECT * FROM Repository  LIMIT 20, :start")
+    @Query("SELECT * FROM Repository  LIMIT :start, 20")
     List<Repository> getRepositories(int start);
 
     @Insert(onConflict = REPLACE)
